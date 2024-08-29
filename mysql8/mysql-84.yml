@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mysql:8.4.2
+    container_name: mysql8
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: root
+      # MYSQL_ALLOW_EMPTY_PASSWORD: yes
+    volumes:
+      - mysql8:/var/lib/mysql
+    ports:
+      - "33068:3306"
+    networks:
+      - my-network
+
+volumes:
+  mysql8:
+    driver: local
+
+networks:
+  my-network:
+    driver: bridge

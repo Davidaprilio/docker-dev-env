@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mysql:5.7.44
+    container_name: mysql5
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: root
+      # MYSQL_ALLOW_EMPTY_PASSWORD: yes
+    volumes:
+      - mysql5:/var/lib/mysql
+    ports:
+      - "33065:3306"
+    networks:
+      - my-network
+
+volumes:
+  mysql5:
+    driver: local
+
+networks:
+  my-network:
+    driver: bridge
