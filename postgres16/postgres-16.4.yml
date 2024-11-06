@@ -2,20 +2,21 @@ services:
   db:
     image: postgres:16.4
     restart: always
+    container_name: postgres16
     # set shared memory limit when using docker-compose
     # shm_size: 128mb
     # or set shared memory limit when deploy via swarm stack
     environment:
       POSTGRES_PASSWORD: root
     volumes:
-      - mysql5:/var/lib/mysql
+      - postgres16:/var/lib/postgresql/data
     ports:
-      - "543216:5432"
+      - "54316:5432"
     networks:
       - my-network
 
 volumes:
-  postgres:
+  postgres16:
     driver: local
 
 networks:

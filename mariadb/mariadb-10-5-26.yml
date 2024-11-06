@@ -1,0 +1,21 @@
+services:
+  db:
+    image: mariadb:10.5.26
+    restart: always
+    container_name: mariadb10
+    environment:
+      MARIADB_ROOT_PASSWORD: mypass
+    volumes:
+      - mariadb10:/var/lib/mysql
+    ports:
+      - "33061:3306"
+    networks:
+      - my-network
+
+volumes:
+  mariadb10:
+    driver: local
+
+networks:
+  my-network:
+    driver: bridge
